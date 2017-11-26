@@ -1,0 +1,42 @@
+<%= nav_bar fixed: :top, brand: "App", responsive: true do %>
+    <%= menu_group do %>
+    <% end %>
+    <%= menu_group pull: :right do %>
+        <% if current_user %>
+            <%= drop_down t("user") do %>
+            <%= menu_item t("edit_password"), edit_user_registration_path %>
+                <%= menu_item t("log_out"), destroy_user_session_path, :method => "DELETE", :confirm => t("sure?") %>
+            <% end %>
+        <% else %>
+            <%= drop_down t("sign_in") do %>
+                <%= form_for :user, url: session_path(:user), :html => {class: "navbar-form pull-right form"} do |f| %>
+                    <div class="form-group">
+                        <label for="InputFieldA">email:</label>
+                        <%= f.text_field :email, :class => "form-control" %>
+                    </div>
+                    <div class="form-group">
+                        <label for="InputFieldA">password:</label>
+                        <%= f.password_field :password, :class => "form-control" %>
+                    </div>
+
+                    <div class="form-group">
+                        <p><%= f.check_box :remember_me %><%= t('remember_me') %></p>
+                    </div>
+
+                    <div class="form-group">
+                        <%= f.submit t("sign_in", :default => "Sign in"), :class => "btn btn-primary" %> <%= t("or") %>
+                        <%= link_to t("sign_up", :default => "Sign up"), new_user_registration_path, :class => "" %>
+                    </div>
+                <% end %>
+            <% end %>
+        <% end %>
+        <%= drop_down t("language") do %>
+            <%= menu_item url_for(:locale => :es) do %>
+                <%= image_tag "es.png" %> <%= t("spanish") %>
+            <% end %>
+            <%= menu_item url_for(:locale => :en) do %>
+                <%= image_tag "en.png" %> <%= t("english") %>
+            <% end %>
+        <% end %>
+    <% end %>
+<% end %>

@@ -1,0 +1,14 @@
+//= require jquery
+//= require jquery.turbolinks
+//= require jquery_ujs
+//= require twitter/bootstrap
+//= require bootstrap-notify
+//= require unobtrusive_flash
+//= require ajax
+//= require nprogress
+//= require nprogress-turbolinks
+//= require sweet-alert
+//= require sweet-alert-confirm
+//= require custom
+//= require events
+//= require turbolinks
